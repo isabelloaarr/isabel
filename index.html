@@ -10,6 +10,7 @@
       text-align: center;
       padding: 50px;
       overflow: hidden;
+      position: relative;
     }
     #question-box {
       background: white;
@@ -41,7 +42,7 @@
       background: red;
       animation: shoot 0.8s linear forwards;
       top: 0;
-      z-index: 9999;
+      z-index: 999;
     }
 
     @keyframes shoot {
@@ -60,7 +61,6 @@
   <!-- Jubel-Sound -->
   <audio id="yay-sound" preload="auto">
     <source src="https://actions.google.com/sounds/v1/human_voices/hooray.ogg" type="audio/ogg">
-    Dein Browser unterstützt keine Audio-Dateien.
   </audio>
 
   <script>
@@ -77,17 +77,14 @@
       });
 
       yesButton.addEventListener("click", () => {
-        // Seite ersetzen
         document.body.innerHTML = `
           <h1>🎉 Herzlichen Glückwunsch!</h1>
           <p>Isabel ist glücklich und bleibt für immer. 🥳</p>
         `;
-
-        // Soundeffekt abspielen
         sound.play();
 
-        // Laserstrahlen erzeugen
-        for (let i = 0; i < 12; i++) {
+        // Laserstrahlen
+        for (let i = 0; i < 15; i++) {
           const laser = document.createElement("div");
           laser.className = "laser";
           laser.style.left = `${Math.random() * 100}vw`;
