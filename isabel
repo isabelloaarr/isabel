@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang=\"de\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>Frage an dich!</title>
+    <style>
+        #frageBox {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div id=\"frageBox\">
+    <p id=\"frage\">Können wir Isabel einen Remotearbeitsvertrag geben?</p>
+    <button onclick=\"antwortNein()\">Das kann ich nicht entscheiden</button>
+    <button onclick=\"antwortJa()\">Ja klar auf jeden Fall</button>
+</div>
+
+<script>
+    function antwortNein() {
+        document.getElementById(\"frage\").innerText = "Denk nochmal drüber nach, können wir Isabel einen Remotevertrag geben?";
+    }
+
+    function antwortJa() {
+        document.getElementById(\"frageBox\").innerHTML = "<h2>Herzlichen Glückwunsch, Isabel ist glücklich und bleibt für immer.</h2>";
+    }
+</script>
+</body>
+</html>
