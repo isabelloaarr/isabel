@@ -9,6 +9,7 @@
       background-color: #f2f2f2;
       text-align: center;
       padding: 50px;
+      overflow: hidden;
     }
     #question-box {
       background: white;
@@ -32,6 +33,21 @@
       background-color: #4CAF50;
       color: white;
     }
+
+    .laser {
+      position: absolute;
+      width: 4px;
+      height: 100vh;
+      background: red;
+      animation: shoot 0.8s linear forwards;
+      top: 0;
+      z-index: 9999;
+    }
+
+    @keyframes shoot {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(100vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -41,12 +57,18 @@
     <button id="yes">Ja klar auf jeden Fall</button>
   </div>
 
+  <!-- Jubel-Sound -->
+  <audio id="yay-sound" preload="auto">
+    <source src="https://actions.google.com/sounds/v1/human_voices/hooray.ogg" type="audio/ogg">
+    Dein Browser unterstützt keine Audio-Dateien.
+  </audio>
+
   <script>
     window.onload = function () {
       const noButton = document.getElementById("no");
       const yesButton = document.getElementById("yes");
       const question = document.getElementById("question");
-
+      const sound = document.getElementById("yay-sound");
       let attempt = 1;
 
       noButton.addEventListener("click", () => {
@@ -55,10 +77,23 @@
       });
 
       yesButton.addEventListener("click", () => {
+        // Seite ersetzen
         document.body.innerHTML = `
           <h1>🎉 Herzlichen Glückwunsch!</h1>
           <p>Isabel ist glücklich und bleibt für immer. 🥳</p>
         `;
+
+        // Soundeffekt abspielen
+        sound.play();
+
+        // Laserstrahlen erzeugen
+        for (let i = 0; i < 12; i++) {
+          const laser = document.createElement("div");
+          laser.className = "laser";
+          laser.style.left = `${Math.random() * 100}vw`;
+          document.body.appendChild(laser);
+          setTimeout(() => laser.remove(), 1000);
+        }
       });
     };
   </script>
