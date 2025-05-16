@@ -42,24 +42,25 @@
   </div>
 
   <script>
-    const noButton = document.getElementById("no");
-    const yesButton = document.getElementById("yes");
-    const question = document.getElementById("question");
+    window.onload = function () {
+      const noButton = document.getElementById("no");
+      const yesButton = document.getElementById("yes");
+      const question = document.getElementById("question");
 
-    let attempt = 1;
+      let attempt = 1;
 
-    noButton.addEventListener("click", () => {
-      attempt++;
-      question.textContent = `Denk nochmal drüber nach (Versuch ${attempt}): Können wir Isabel einen Remotearbeitsvertrag geben?`;
-    });
+      noButton.addEventListener("click", () => {
+        attempt++;
+        question.textContent = `Denk nochmal drüber nach (Versuch ${attempt}): Können wir Isabel einen Remotearbeitsvertrag geben?`;
+      });
 
-    yesButton.addEventListener("click", () => {
-      document.body.innerHTML = `
-        <h1>🎉 Herzlichen Glückwunsch!</h1>
-        <p>Isabel ist glücklich und bleibt für immer. 🥳</p>
-      `;
-    });
+      yesButton.addEventListener("click", () => {
+        document.body.innerHTML = `
+          <h1>🎉 Herzlichen Glückwunsch!</h1>
+          <p>Isabel ist glücklich und bleibt für immer. 🥳</p>
+        `;
+      });
+    };
   </script>
 </body>
 </html>
-
