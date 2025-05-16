@@ -1,36 +1,65 @@
 <!DOCTYPE html>
-<html lang=\"de\">
+<html lang="de">
 <head>
-    <meta charset=\"UTF-8\">
-    <title>Frage an dich!</title>
-    <style>
-        #frageBox {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Wichtige Entscheidung</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 50px;
+    }
+    #question-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    #no {
+      background-color: #ddd;
+    }
+    #yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-<div id=\"frageBox\">
-    <p id=\"frage\">Können wir Isabel einen Remotearbeitsvertrag geben?</p>
-    <button onclick=\"antwortNein()\">Das kann ich nicht entscheiden</button>
-    <button onclick=\"antwortJa()\">Ja klar auf jeden Fall</button>
-</div>
+  <div id="question-box">
+    <h2 id="question">Können wir Isabel einen Remotearbeitsvertrag geben?</h2>
+    <button id="no">Das kann ich nicht entscheiden</button>
+    <button id="yes">Ja klar auf jeden Fall</button>
+  </div>
 
-<script>
-    function antwortNein() {
-        document.getElementById(\"frage\").innerText = "Denk nochmal drüber nach, können wir Isabel einen Remotevertrag geben?";
-    }
+  <script>
+    const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
+    const question = document.getElementById("question");
 
-    function antwortJa() {
-        document.getElementById(\"frageBox\").innerHTML = "<h2>Herzlichen Glückwunsch, Isabel ist glücklich und bleibt für immer.</h2>";
-    }
-</script>
+    let attempt = 1;
+
+    noButton.addEventListener("click", () => {
+      attempt++;
+      question.textContent = `Denk nochmal drüber nach (Versuch ${attempt}): Können wir Isabel einen Remotearbeitsvertrag geben?`;
+    });
+
+    yesButton.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <h1>🎉 Herzlichen Glückwunsch!</h1>
+        <p>Isabel ist glücklich und bleibt für immer. 🥳</p>
+      `;
+    });
+  </script>
 </body>
 </html>
+
