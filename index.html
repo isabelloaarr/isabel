@@ -2,52 +2,69 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Wichtige Entscheidung</title>
+  <title>Isabels Remote-Vertrag</title>
   <style>
     body {
-      font-family: sans-serif;
-      background-color: #f2f2f2;
-      text-align: center;
-      padding: 50px;
-      overflow: hidden;
-      position: relative;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #1d1d1f;
     }
+
     #question-box {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      display: inline-block;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
     }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
     button {
-      margin: 10px;
-      padding: 10px 20px;
       font-size: 16px;
-      border-radius: 5px;
+      padding: 12px 24px;
+      margin: 10px;
       border: none;
+      border-radius: 999px;
       cursor: pointer;
+      transition: all 0.2s ease;
     }
+
     #no {
-      background-color: #ddd;
+      background-color: #e5e5ea;
+      color: #1d1d1f;
     }
+
+    #no:hover {
+      background-color: #d1d1d6;
+    }
+
     #yes {
-      background-color: #4CAF50;
+      background-color: #007aff;
       color: white;
     }
 
-    .laser {
-      position: absolute;
-      width: 4px;
-      height: 100vh;
-      background: red;
-      animation: shoot 0.8s linear forwards;
-      top: 0;
-      z-index: 999;
+    #yes:hover {
+      background-color: #005fce;
     }
 
-    @keyframes shoot {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(100vh); opacity: 0; }
+    .final-message {
+      font-size: 22px;
+      line-height: 1.6;
+      font-weight: 500;
+      padding: 20px;
     }
   </style>
 </head>
@@ -55,10 +72,10 @@
   <div id="question-box">
     <h2 id="question">Können wir Isabel einen Remotearbeitsvertrag geben?</h2>
     <button id="no">Das kann ich nicht entscheiden</button>
-    <button id="yes">Ja klar auf jeden Fall</button>
+    <button id="yes">Ja klar, auf jeden Fall</button>
   </div>
 
-  <!-- Jubel-Sound -->
+  <!-- Sound -->
   <audio id="yay-sound" preload="auto">
     <source src="https://actions.google.com/sounds/v1/human_voices/hooray.ogg" type="audio/ogg">
   </audio>
@@ -78,19 +95,12 @@
 
       yesButton.addEventListener("click", () => {
         document.body.innerHTML = `
-          <h1>🎉 Herzlichen Glückwunsch!</h1>
-          <p>Isabel ist glücklich und bleibt für immer. 🥳</p>
+          <div class="final-message">
+            🎉 Herzlichen Glückwunsch! <br><br>
+            Isabel ist glücklich und bleibt für immer. 🥰
+          </div>
         `;
         sound.play();
-
-        // Laserstrahlen
-        for (let i = 0; i < 15; i++) {
-          const laser = document.createElement("div");
-          laser.className = "laser";
-          laser.style.left = `${Math.random() * 100}vw`;
-          document.body.appendChild(laser);
-          setTimeout(() => laser.remove(), 1000);
-        }
       });
     };
   </script>
